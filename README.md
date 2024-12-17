@@ -9,7 +9,7 @@ This repository contains the source code for the Web SDK to connect to the realt
 Do the following to install the SDK:
 
 ```bash
-npm install oci-ai-speech-realtime-web
+npm install @oracle/oci-ai-speech-realtime-web
 ```
 
 You can also choose to clone this git repo and install from source.
