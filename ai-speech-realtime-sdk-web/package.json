@@ -1,0 +1,26 @@
+{
+  "name": "oci-ai-speech-realtime-web",
+  "version": "0.0.1",
+  "description": "OCI Web client for AI Speech Realtime Service",
+  "main": "dist/index.js",
+  "scripts": {
+    "lint": "eslint . --ext .ts",
+    "prepack": "cp ../LICENSE.txt .",
+    "build": "rimraf ./dist && tsc",
+    "test": "jest"
+  },
+  "author": "Oracle",
+  "license": "UPL",
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/ws": "^8.5.4",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.4.0",
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "rimraf": "^5.0.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.4.2"
+  }
+}
