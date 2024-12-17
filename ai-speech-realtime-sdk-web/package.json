@@ -12,6 +12,10 @@
   },
   "author": "Oracle",
   "license": "UPL",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oracle/oci-ai-speech-realtime-web-sdk.git"
+  },
   "devDependencies": {
     "@types/jest": "^29.5.14",
     "@types/ws": "^8.5.4",
