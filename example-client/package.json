@@ -1,5 +1,5 @@
 {
-  "name": "oci-aispeech-realtime-web-example",
+  "name": "oci-ai-speech-realtime-web-example",
   "version": "0.0.1",
   "description": "OCI NodeJS server and Web client example for AI Speech Realtime Service",
   "main": "dist/index.js",
@@ -29,7 +29,6 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@oracle/oci-ai-speech-realtime": "^2.0.0-rc1",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "oci-aispeech": "^2.91.1",

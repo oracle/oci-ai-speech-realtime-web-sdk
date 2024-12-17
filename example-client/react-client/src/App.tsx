@@ -13,7 +13,7 @@ import {
   RealtimeMessageResult,
   RealtimeParametersModelDomainEnum,
   RealtimeParametersStabilizePartialResultsEnum,
-} from "oci-aispeech-realtime-web";
+} from "@oracle/oci-ai-speech-realtime-web";
 
 function App() {
   // Initialize the OCI Realtime Speech Web SDK
