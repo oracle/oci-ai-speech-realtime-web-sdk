@@ -1,6 +1,6 @@
 {
   "name": "oci-ai-speech-realtime-web-example",
-  "version": "0.0.1",
+  "version": "2.0.0-rc1",
   "description": "OCI NodeJS server and Web client example for AI Speech Realtime Service",
   "main": "dist/index.js",
   "scripts": {
