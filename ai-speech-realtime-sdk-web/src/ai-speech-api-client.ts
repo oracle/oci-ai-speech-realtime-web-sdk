@@ -1,5 +1,10 @@
 /* tslint:disable */
 
+/*
+** Copyright (c) 2024, Oracle and/or its affiliates. 
+** Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/ 
+*/
+
 /**
  * Speech API
  * The OCI Speech Service harnesses the power of spoken language by allowing developers to easily convert file-based data containing human speech into highly accurate text transcriptions.
