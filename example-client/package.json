@@ -1,0 +1,37 @@
+{
+  "name": "oci-ai-speech-realtime-web-example",
+  "version": "0.0.1",
+  "description": "OCI NodeJS server and Web client example for AI Speech Realtime Service",
+  "main": "dist/index.js",
+  "scripts": {
+    "setup": "npm i && npm i --prefix react-client",
+    "start:server": "node dist/index.js",
+    "start:dev": "npx nodemon",
+    "start:client": "npm start --prefix react-client",
+    "start": "concurrently \"npm run start:dev\" \"npm run start:client\"",
+    "lint": "eslint . --ext .ts",
+    "build": "rimraf ./dist && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Oracle",
+  "license": "UPL",
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.1.0",
+    "@types/node-fetch": "^2.6.7",
+    "@typescript-eslint/eslint-plugin": "^5.59.2",
+    "@typescript-eslint/parser": "^5.59.2",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.40.0",
+    "nodemon": "^2.0.22",
+    "rimraf": "^5.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "oci-aispeech": "^2.91.1",
+    "oci-common": "^2.91.1"
+  }
+}
