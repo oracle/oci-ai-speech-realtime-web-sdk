@@ -1,11 +1,11 @@
 {
   "name": "@oracle/oci-ai-speech-realtime-web",
-  "version": "2.0.0-rc1",
+  "version": "2.0.0",
   "description": "OCI Web client for AI Speech Realtime Service",
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint . --ext .ts",
-    "prepack": "cp ../LICENSE.txt .",
+    "prepack": "cp ../LICENSE.txt ../README.md .",
     "build": "rimraf ./dist && tsc",
     "test": "jest",
     "prepublishOnly": "npm run build"
