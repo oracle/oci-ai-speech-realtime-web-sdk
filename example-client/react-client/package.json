@@ -36,7 +36,7 @@
     "@types/node": "^20.14.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "@oracle/oci-ai-speech-realtime-web": "2.0.0-rc1",
+    "@oracle/oci-ai-speech-realtime-web": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
