@@ -1,8 +1,8 @@
 /*
-**
-** Copyright (c) 2024 Oracle and/or its affiliates
-** Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
-*/
+ **
+ ** Copyright (c) 2024, 2025, Oracle and/or its affiliates
+ ** Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
+ */
 
 import { LP_275_TO_100_FIR, LP_2_TO_1_FIR, LP_3_TO_1_FIR } from "./filters";
 
