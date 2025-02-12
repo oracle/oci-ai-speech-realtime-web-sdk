@@ -1,7 +1,7 @@
 /*
-** Copyright (c) 2024 Oracle and/or its affiliates
-** Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
-*/
+ ** Copyright (c) 2024 Oracle and/or its affiliates
+ ** Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
+ */
 
 import React from "react";
 import "./App.css";
@@ -13,6 +13,7 @@ import {
   RealtimeMessageResult,
   RealtimeParametersModelDomainEnum,
   RealtimeParametersStabilizePartialResultsEnum,
+  RealtimeParametersPunctuationEnum,
 } from "@oracle/oci-ai-speech-realtime-web";
 
 function App() {
@@ -125,6 +126,7 @@ function App() {
       partialSilenceThresholdInMs: 0,
       finalSilenceThresholdInMs: 1000,
       shouldIgnoreInvalidCustomizations: false,
+      punctuation: RealtimeParametersPunctuationEnum.NONE,
       encoding: "audio/raw;rate=16000",
     };
 

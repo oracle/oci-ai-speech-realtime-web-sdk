@@ -1,9 +1,9 @@
 /* tslint:disable */
 
 /*
-** Copyright (c) 2024, Oracle and/or its affiliates. 
-** Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/ 
-*/
+ ** Copyright (c) 2024, Oracle and/or its affiliates.
+ ** Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
+ */
 
 /**
  * Speech API
@@ -231,13 +231,17 @@ export interface RealtimeParameters {
    */
   languageCode?: string;
   /**
-   * If set to true, the service will not fail connection attempt if it encounters any issues that prevent the loading of all specified user customizations. Any invalid customizations will simply be ignored and connection will continue being established with the default base model and any remaining valid customizations. If set to false,  if the service is unable to load any of the specified customizations, an error detailing why will be returned and the session will end.
+   * If set to true, the service will not fail connection attempt if it encounters any issues that prevent the loading of all specified user customizations. Any invalid customizations will simply be ignored and connection will continue being established with the default base model and any remaining valid customizations. If set to false, if the service is unable to load any of the specified customizations, an error detailing why will be returned and the session will end.
    */
   shouldIgnoreInvalidCustomizations?: boolean;
   /**
    * Array of customization objects.
    */
   customizations?: Array<CustomizationInference>;
+  /**
+   * Configure punctuations in the generated transcriptions. Disabled by default. - NONE: No punctuation in the transcription response - SPOKEN: Punctuations in response only when verbally spoken - AUTO: Automatic punctuation in the response, spoken punctuations are disabled
+   */
+  punctuation?: RealtimeParametersPunctuationEnum;
 }
 
 export enum RealtimeParametersStabilizePartialResultsEnum {
@@ -249,6 +253,11 @@ export enum RealtimeParametersStabilizePartialResultsEnum {
 export enum RealtimeParametersModelDomainEnum {
   GENERIC = "GENERIC",
   MEDICAL = "MEDICAL",
+}
+export enum RealtimeParametersPunctuationEnum {
+  NONE = "NONE",
+  SPOKEN = "SPOKEN",
+  AUTO = "AUTO",
 }
 /**
  * The response from the realtime session token endpoint that creates the auth token to be used with the realtime speech service.
