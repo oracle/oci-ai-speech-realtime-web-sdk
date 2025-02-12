@@ -1,55 +1,55 @@
 /*
-** Copyright (c) 2024, Oracle and/or its affiliates. 
-** Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/ 
-*/
+ ** Copyright (c) 2024, 2025, Oracle and/or its affiliates.
+ ** Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
+ */
 
 // Mock implementation of WebSocket
 export class MockWebSocket {
-    static instances: MockWebSocket[] = []; // Track created instances
-    constructor(url: string) {
-        if (!url || typeof url !== "string") {
-            throw new Error("A valid WebSocket URL must be provided.");
-        }
-        this.url = url; // Capture the provided URL
-        MockWebSocket.instances.push(this); // Track this instance
+  static instances: MockWebSocket[] = []; // Track created instances
+  constructor(url: string) {
+    if (!url || typeof url !== "string") {
+      throw new Error("A valid WebSocket URL must be provided.");
     }
-    url = ""
-    onopen: (() => void) | null = null;
-    onmessage: ((event: MessageEvent) => void) | null = null;
-    onclose: ((event: CloseEvent) => void) | null = null;
-    onerror: ((event: ErrorEvent) => void) | null = null;
-  
-    send = jest.fn();
-    close = jest.fn();
-  
-    // Simulate opening the connection
-    simulateOpen() {
-      if (this.onopen) {
-        this.onopen();
-      }
-    }
-  
-    // Simulate receiving a message
-    simulateMessage(data: any) {
-      if (this.onmessage) {
-        this.onmessage({ data } as MessageEvent);
-      }
-    }
-  
-    // Simulate closing the connection
-    simulateClose(event: Partial<CloseEvent> = {}) {
-      if (this.onclose) {
-        this.onclose(event as CloseEvent);
-      }
-    }
-  
-    // Simulate an error
-    simulateError(event: Partial<Event> = {}) {
-      if (this.onerror) {
-        this.onerror(event as ErrorEvent);
-      }
+    this.url = url; // Capture the provided URL
+    MockWebSocket.instances.push(this); // Track this instance
+  }
+  url = "";
+  onopen: (() => void) | null = null;
+  onmessage: ((event: MessageEvent) => void) | null = null;
+  onclose: ((event: CloseEvent) => void) | null = null;
+  onerror: ((event: ErrorEvent) => void) | null = null;
+
+  send = jest.fn();
+  close = jest.fn();
+
+  // Simulate opening the connection
+  simulateOpen() {
+    if (this.onopen) {
+      this.onopen();
     }
   }
+
+  // Simulate receiving a message
+  simulateMessage(data: any) {
+    if (this.onmessage) {
+      this.onmessage({ data } as MessageEvent);
+    }
+  }
+
+  // Simulate closing the connection
+  simulateClose(event: Partial<CloseEvent> = {}) {
+    if (this.onclose) {
+      this.onclose(event as CloseEvent);
+    }
+  }
+
+  // Simulate an error
+  simulateError(event: Partial<Event> = {}) {
+    if (this.onerror) {
+      this.onerror(event as ErrorEvent);
+    }
+  }
+}
 
 interface MockAudioStreamConfig {
   sampleRate: number;
@@ -64,18 +64,19 @@ export class MockAudioStreamer {
   config: MockAudioStreamConfig;
   state: string;
   constructor(mediaStream: MediaStream, config: MockAudioStreamConfig) {
-    console.log("mock audio streamer used")
+    console.log("mock audio streamer used");
     this.config = config;
     this.mediaStream = mediaStream;
     this.state = "INACTIVE";
     this.enableCompatibility();
   }
-  startRecording() {return true}
+  startRecording() {
+    return true;
+  }
   enableCompatibility() {
     return true;
   }
 }
-
 
 // Mocking MediaStream class
 export class MockMediaStream {
@@ -108,5 +109,3 @@ export class MockNavigator {
     };
   }
 }
-
-  

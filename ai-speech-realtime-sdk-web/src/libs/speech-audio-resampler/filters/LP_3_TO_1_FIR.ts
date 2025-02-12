@@ -1,12 +1,12 @@
-/* 
-** Copyright (c) 2024, Oracle and/or its affiliates. 
-** Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/ 
-* @author Stephane PEILLON
-* @description 3:1 Low Pass FIR for Downsampling Antialisaing.
-* Works for any 3x kHz to x kHz downsampling.
-* ( QMF FIR filter with cut-off frequency (@ -3 dB) at about 0.913 times target fs/2 - 180 taps )
-* @example Convert 48000 Hz to 16000 Hz, or 96000 Hz to 32000 Hz.
-**/
+/*
+ ** Copyright (c) 2024, 2025, Oracle and/or its affiliates.
+ ** Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
+ * @author Stephane PEILLON
+ * @description 3:1 Low Pass FIR for Downsampling Antialisaing.
+ * Works for any 3x kHz to x kHz downsampling.
+ * ( QMF FIR filter with cut-off frequency (@ -3 dB) at about 0.913 times target fs/2 - 180 taps )
+ * @example Convert 48000 Hz to 16000 Hz, or 96000 Hz to 32000 Hz.
+ **/
 export default [
   -2.5033838264794034e-5, -3.6451561137378568e-5, -1.1489993827892933e-5, 3.9324378887465603e-5, 6.9984193520672766e-5, 3.7556691270439976e-5, -4.7696645534530499e-5, -0.00011379935461751734,
   -8.4009576971176187e-5, 4.2088177776074692e-5, 0.00016391587447478332, 0.00015508372993570357, -1.253765788919669e-5, -0.00021258262011091092, -0.00025240598961751948, -5.1874329668708116e-5,
