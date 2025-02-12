@@ -1,7 +1,7 @@
 /*
-** Copyright (c) 2024, Oracle and/or its affiliates. 
-** Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/ 
-*/
+ ** Copyright (c) 2024, Oracle and/or its affiliates.
+ ** Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
+ */
 
 import AudioStreamer, { AudioStreamConfig } from "./speech-audio-streamer";
 import {
@@ -18,6 +18,7 @@ import {
   RealtimeParametersModelDomainEnum,
   RealtimeParametersStabilizePartialResultsEnum,
   RealtimeMessageOutEventEnum,
+  RealtimeParametersPunctuationEnum,
 } from "./ai-speech-api-client";
 
 export enum RealtimeWebSocketState {
@@ -57,6 +58,8 @@ export class AIServiceSpeechRealtimeApi {
     shouldIgnoreInvalidCustomizations: false,
     languageCode: "en-US",
     modelDomain: RealtimeParametersModelDomainEnum.GENERIC,
+    encoding: "audio/raw;rate=16000",
+    punctuation: RealtimeParametersPunctuationEnum.NONE,
   } as RealtimeParameters;
   audioStreamer: AudioStreamer;
   audioStreamConfig: AudioStreamConfig;
@@ -97,7 +100,6 @@ export class AIServiceSpeechRealtimeApi {
       if (realtimeMessageEvent === "ACKAUDIO") {
         this.realtimeClientListener.onAckAudio(data as any as RealtimeMessageAckAudio);
       } else if (realtimeMessageEvent === "CONNECT") {
-        //this.setWebSocketState(RealtimeWebSocketState.RUNNING);
         this.initAudio();
         this.realtimeClientListener.onConnectMessage(data as any as RealtimeMessageConnect);
       } else if (realtimeMessageEvent === "RESULT") {
@@ -114,12 +116,6 @@ export class AIServiceSpeechRealtimeApi {
     this.setWebSocketState(RealtimeWebSocketState.ERROR);
     this.realtimeClientListener.onError(error);
   };
-
-  // private onWebsocketMessage = (message: MessageEvent) => {
-  //   if (message.data) {
-  //     this.onMessageCallback("MESSAGE", message);
-  //   }
-  // };
 
   private initAudio = () => {
     try {
@@ -165,12 +161,14 @@ export class AIServiceSpeechRealtimeApi {
   private parseParameters = (params: RealtimeParameters) => {
     let parameterString = "?";
     if (params.isAckEnabled !== undefined) parameterString += "isAckEnabled=" + params.isAckEnabled + "&";
+    if (params.encoding !== undefined) parameterString += "encoding=" + params.encoding + "&";
     if (params.partialSilenceThresholdInMs !== undefined) parameterString += "partialSilenceThresholdInMs=" + params.partialSilenceThresholdInMs + "&";
     if (params.finalSilenceThresholdInMs !== undefined) parameterString += "finalSilenceThresholdInMs=" + params.finalSilenceThresholdInMs + "&";
     if (params.languageCode !== undefined) parameterString += "languageCode=" + params.languageCode + "&";
     if (params.modelDomain !== undefined) parameterString += "modelDomain=" + params.modelDomain + "&";
     if (params.stabilizePartialResults !== undefined) parameterString += "stabilizePartialResults=" + params.stabilizePartialResults + "&";
     if (params.shouldIgnoreInvalidCustomizations !== undefined) parameterString += "shouldIgnoreInvalidCustomizations=" + params.shouldIgnoreInvalidCustomizations + "&";
+    if (params.punctuation !== undefined && params.punctuation !== RealtimeParametersPunctuationEnum.NONE) parameterString += "punctuation=" + params.punctuation + "&";
     if (params.customizations !== undefined && params.customizations.length > 0) {
       parameterString += "customizations=" + encodeURIComponent(JSON.stringify(params.customizations));
     }

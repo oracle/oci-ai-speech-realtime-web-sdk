@@ -31,6 +31,9 @@ import * as common from "oci-common";
 import * as aispeech from "oci-aispeech";
 import bodyParser from "body-parser";
 
+import fs from "fs";
+import https from "https";
+
 const app = express();
 const cors = require("cors");
 const path = require("path");
@@ -42,9 +45,7 @@ app.use(cors());
 const compartmentId = "<compartment-id>";
 
 // Set the region where you want to use the services
-const region = "<region>" // e.g. "us-phoenix-1";
-
-const provider: common.SessionAuthDetailProvider = new common.SessionAuthDetailProvider("~/.oci/config", "DEFAULT");
+const region = "<region>"; // e.g. "us-phoenix-1";
 
 /**
  * Generates a real-time session token using Oracle Cloud Infrastructure (OCI) AI Speech Service.
@@ -62,6 +63,7 @@ const provider: common.SessionAuthDetailProvider = new common.SessionAuthDetailP
 async function getRealtimeToken() {
   // Use the AuthDetailsProvider suited for your use case.
   // Read more at - https://docs.oracle.com/en-us/iaas/Content/API/Concepts/sdk_authentication_methods.htm
+  const provider: common.SessionAuthDetailProvider = new common.SessionAuthDetailProvider("~/.oci/config", "DEFAULT");
 
   provider.setRegion(region);
 
@@ -123,13 +125,29 @@ app.get("/region", (req, res) => {
 });
 
 /**
- * Starts the Express server and listens on the specified port.
+ * Add your own certificates to setup HTTPS server.
+ */
+const httpsOptions = {
+  key: fs.readFileSync("./security/cert.key"),
+  cert: fs.readFileSync("./security/cert.pem"),
+};
+
+/**
+ * Creates an HTTPS Express server and listens on the specified port.
  *
+ * @param {{key: Buffer, cert: Buffer}} httpsOptions - Options for HTTPS server like certificate and key.
+ * @param {Express} app - Express object that is bind to the HTTPS server.
  * @param {number} port - The port number on which the server will listen.
  * @param {() => void} [callback] - Optional callback function that is invoked after the server starts listening.
  *
- * @returns {void}
+ * @returns {https.Server}
  */
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+const server = https.createServer(httpsOptions, app).listen(port, () => {
+  console.log(`Server initiated on ${port}`);
 });
+
+/* uncomment to use http if certificates not available
+app.listen(port, () => {
+  console.log(`Server initiated on ${port}`);
+});
+ */
