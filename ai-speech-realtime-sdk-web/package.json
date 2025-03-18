@@ -1,6 +1,6 @@
 {
   "name": "@oracle/oci-ai-speech-realtime-web",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "OCI Web client for AI Speech Realtime Service",
   "main": "dist/index.js",
   "scripts": {

@@ -122,6 +122,7 @@ function App() {
       customizations: [],
       languageCode: "en-US",
       modelDomain: RealtimeParametersModelDomainEnum.GENERIC,
+      modelType: "ORACLE",
       stabilizePartialResults: RealtimeParametersStabilizePartialResultsEnum.NONE,
       partialSilenceThresholdInMs: 0,
       finalSilenceThresholdInMs: 1000,

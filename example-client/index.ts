@@ -105,7 +105,7 @@ app.get("/authenticate", (req, res) => {
       res.send(response);
     })
     .catch((error) => {
-      console.log("createRealtimeSessionToken Failed with error " + error);
+      console.log("createRealtimeSessionToken Failed with error ", error);
       res.status(401);
       res.send(error);
     });
@@ -142,9 +142,11 @@ const httpsOptions = {
  *
  * @returns {https.Server}
  */
+/* uncomment to use https if certificates are available
 const server = https.createServer(httpsOptions, app).listen(port, () => {
   console.log(`Server initiated on ${port}`);
 });
+*/
 
 /* uncomment to use http if certificates not available
 app.listen(port, () => {

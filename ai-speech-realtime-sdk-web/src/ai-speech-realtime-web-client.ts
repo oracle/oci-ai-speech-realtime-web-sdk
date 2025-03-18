@@ -58,6 +58,7 @@ export class AIServiceSpeechRealtimeApi {
     shouldIgnoreInvalidCustomizations: false,
     languageCode: "en-US",
     modelDomain: RealtimeParametersModelDomainEnum.GENERIC,
+    modelType: "ORACLE",
     encoding: "audio/raw;rate=16000",
     punctuation: RealtimeParametersPunctuationEnum.NONE,
   } as RealtimeParameters;
@@ -166,6 +167,7 @@ export class AIServiceSpeechRealtimeApi {
     if (params.finalSilenceThresholdInMs !== undefined) parameterString += "finalSilenceThresholdInMs=" + params.finalSilenceThresholdInMs + "&";
     if (params.languageCode !== undefined) parameterString += "languageCode=" + params.languageCode + "&";
     if (params.modelDomain !== undefined) parameterString += "modelDomain=" + params.modelDomain + "&";
+    if (params.modelType !== undefined && params.modelType !== "ORACLE") parameterString += "modelType=" + params.modelType + "&";
     if (params.stabilizePartialResults !== undefined) parameterString += "stabilizePartialResults=" + params.stabilizePartialResults + "&";
     if (params.shouldIgnoreInvalidCustomizations !== undefined) parameterString += "shouldIgnoreInvalidCustomizations=" + params.shouldIgnoreInvalidCustomizations + "&";
     if (params.punctuation !== undefined && params.punctuation !== RealtimeParametersPunctuationEnum.NONE) parameterString += "punctuation=" + params.punctuation + "&";
